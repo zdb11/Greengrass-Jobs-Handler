@@ -25,7 +25,7 @@ reconnect/${topic(5)}
 Quality of service on 1 
 
 Role policy
-*** Add your REGION AND ACC NUMBER ***
+***Add your REGION AND ACC NUMBER***
 ```javascript
 {
     "Version": "2012-10-17",
@@ -37,7 +37,7 @@ Role policy
 }
 ```
 ### 2. Add IoT Core policy to your thing certificate
-*** Add your REGION AND ACC NUMBER ***
+***Add your REGION AND ACC NUMBER***
 ```javascript
 {
       "Effect": "Allow",
