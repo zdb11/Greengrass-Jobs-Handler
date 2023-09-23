@@ -1,0 +1,28 @@
+---
+RecipeFormatVersion: "2020-01-25"
+ComponentName: "{COMPONENT_NAME}"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription: "Custom Greengrass component for handling IoT Core Jobs after reconnecting."
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.mqttproxy:
+        "GreengrassJobsHandler:mqttproxy:1":
+          policyDescription: Allows access to publish/subscribe to all topics.
+          operations:
+            - aws.greengrass#PublishToIoTCore
+            - aws.greengrass#SubscribeToIoTCore
+          resources:
+            - "*"
+Manifests:
+  - Platform:
+      os: all
+    Artifacts:
+      - URI: "s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/Greengrass-Jobs-Handler.zip"
+        Unarchive: ZIP
+    Lifecycle:
+      Install:
+          RequiresPrivilege: true
+          script: "python3 -m pip install --user awsiotsdk"
+      Run: "python3 -u {artifacts:decompressedPath}/Greengrass-Jobs-Handler/main.py {iot:thingName}"

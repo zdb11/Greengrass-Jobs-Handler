@@ -1,0 +1,16 @@
+{
+  "component": {
+    "GreengrassJobsHandler": {
+      "author": "Grzegorz Dziedzicki",
+      "version": "NEXT_PATCH",
+      "build": {
+        "build_system": "zip"
+      },
+      "publish": {
+        "bucket": "YOUR BUCKET",
+        "region": "AWS REGION"
+      }
+    }
+  },
+  "gdk_version": "1.0.0"
+}
